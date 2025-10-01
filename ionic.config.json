@@ -1,0 +1,7 @@
+{
+  "name": "sip-and-drips",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
