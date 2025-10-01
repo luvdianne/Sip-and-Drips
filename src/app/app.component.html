@@ -1,33 +1,65 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
+  <ion-menu contentId="main-content" side="start" menuId="main-menu">
+    <ion-content>
+      <!-- Header / Profile -->
+      <div class="menu-header">
+        <img src="assets/logo.png" alt="logo" class="menu-avatar" />
+        <h2>Sip and Drips.</h2>
+        <p>Shop</p>
+      </div>
 
-          @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          }
-        </ion-list>
+      <!-- Navigation List -->
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/dashboard">
+            <ion-icon slot="start" name="home-outline"></ion-icon>
+            <ion-label>Dashboard</ion-label>
+          </ion-item>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+          <ion-item routerLink="/shop">
+            <ion-icon slot="start" name="bag-handle-outline"></ion-icon>
+            <ion-label>Shop</ion-label>
+          </ion-item>
 
-          @for (label of labels; track label) {
-            <ion-item lines="none">
-              <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
-          }
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+          <ion-item routerLink="/wishlist">
+            <ion-icon slot="start" name="heart-outline"></ion-icon>
+            <ion-label>Wishlist</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/notifications">
+            <ion-icon slot="start" name="notifications-outline"></ion-icon>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/about">
+            <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+            <ion-label>About the App</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/developers">
+            <ion-icon slot="start" name="people-outline"></ion-icon>
+            <ion-label>Developers</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/settings">
+            <ion-icon slot="start" name="settings-outline"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- Logout Button -->
+      <div class="logout-btn">
+        <ion-item button>
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Main Page Content -->
+  <div class="ion-page" id="main-content">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>
