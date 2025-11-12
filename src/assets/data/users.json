@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "dianne",
+      "email": "dianne@example.com",
+      "password": "password123",
+      "firstName": "Dianne",
+      "lastName": "User",
+      "avatar": "assets/dianne.jpg"
+    },
+    {
+      "id": 2,
+      "username": "aldean",
+      "email": "aldean@example.com",
+      "password": "password123",
+      "firstName": "Aldean",
+      "lastName": "User",
+      "avatar": "assets/aldean.png"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "firstName": "Admin",
+      "lastName": "User",
+      "avatar": "assets/logo.png"
+    }
+  ]
+}

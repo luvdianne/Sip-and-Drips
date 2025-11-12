@@ -3,178 +3,375 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>SIP & DRIPS</ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/cart">
         <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="danger" slot="end">3</ion-badge>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <!-- Welcome Section -->
-  <div class="welcome-section">
-    <h2>Welcome to Sip & Drips 🧃</h2>
-    <p>Refresh your day with artisanal bottled juices</p>
-  </div>
+  <div class="dashboard-container">
 
-  <!-- Promotional Banner -->
-  <div class="promo-banner">
-    <div class="promo-content">
-      <h3>🎉 Special Offer!</h3>
-      <p>Get 20% off on all tropical blends</p>
-      <ion-button size="small" fill="solid" color="warning">Shop Now</ion-button>
-    </div>
-  </div>
-
-  <!-- Quick Stats -->
-  <div class="stats-container">
-    <div class="stat-card">
-      <ion-icon name="heart"></ion-icon>
-      <div class="stat-info">
-        <h4>0</h4>
-        <p>Wishlist</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <ion-icon name="bag-check"></ion-icon>
-      <div class="stat-info">
-        <h4>0</h4>
-        <p>Orders</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <ion-icon name="star"></ion-icon>
-      <div class="stat-info">
-        <h4>0</h4>
-        <p>Reviews</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categories Section -->
-  <div class="section-header">
-    <h3>Browse by Category</h3>
-    <ion-button fill="clear" size="small" routerLink="/shop">View All</ion-button>
-  </div>
-
-  <div class="categories-scroll">
-    <div class="category-chip">
-      <ion-icon name="leaf"></ion-icon>
-      <span>Citrus</span>
-    </div>
-    <div class="category-chip">
-      <ion-icon name="water"></ion-icon>
-      <span>Tropical</span>
-    </div>
-    <div class="category-chip">
-      <ion-icon name="fitness"></ion-icon>
-      <span>Detox</span>
-    </div>
-    <div class="category-chip">
-      <ion-icon name="nutrition"></ion-icon>
-      <span>Berry Blends</span>
-    </div>
-    <div class="category-chip">
-      <ion-icon name="sparkles"></ion-icon>
-      <span>Premium</span>
-    </div>
-  </div>
-
-  <!-- Featured Products -->
-  <div class="section-header">
-    <h3>Featured Products</h3>
-    <ion-button fill="clear" size="small" routerLink="/shop">See More</ion-button>
-  </div>
-
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-image">
-        <ion-icon name="wine" color="warning"></ion-icon>
-      </div>
-      <div class="product-info">
-        <h4>Orange Burst</h4>
-        <p>Fresh Valencia oranges</p>
-        <div class="product-footer">
-          <span class="price">₱120</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
+    <div class="welcome-section">
+      <div class="welcome-content">
+        <div class="user-greeting">
+          <div class="greeting-icon">
+            <ion-icon name="sunny" color="warning"></ion-icon>
+          </div>
+          <div>
+            <h2>Hello, Dianne! 👋</h2> 
+            <p>Ready to refresh your day?</p>
+          </div>
+        </div>
+        <div class="user-avatar">
+          <ion-avatar>
+            <ion-icon name="person-circle" color="warning"></ion-icon>
+          </ion-avatar>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
-      <div class="product-image">
-        <ion-icon name="wine" color="danger"></ion-icon>
+    <div class="search-section">
+      <ion-searchbar 
+        placeholder=" Search juices, categories..."
+        animated="true"
+        mode="ios">
+      </ion-searchbar>
+    </div>
+
+    <div class="promo-banner">
+      <div class="promo-icon">
+        <ion-icon name="gift-outline"></ion-icon>
       </div>
-      <div class="product-info">
-        <h4>Berry Mix</h4>
-        <p>Strawberry & blueberry</p>
-        <div class="product-footer">
-          <span class="price">₱150</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
+      <div class="promo-content">
+        <h3>🎉 Special Offer!</h3>
+        <p>Get 20% off on all tropical blends</p>
+      </div>
+      <ion-button size="small" fill="solid" color="warning" routerLink="/shop">
+        <ion-icon slot="start" name="cart"></ion-icon>
+        Shop Now
+      </ion-button>
+    </div>
+
+    <div class="section-header">
+      <h3>
+        <ion-icon name="stats-chart-outline"></ion-icon>
+        Quick Stats
+      </h3>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">
+          <ion-icon name="heart" color="light"></ion-icon>
+        </div>
+        <div class="stat-info">
+          <h4>12</h4>
+          <p>Favorites</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #4CAF50, #45a049);">
+          <ion-icon name="bag-check-outline" color="light"></ion-icon>
+        </div>
+        <div class="stat-info">
+          <h4>28</h4>
+          <p>Orders</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #FFB84D, #f39c12);">
+          <ion-icon name="star" color="light"></ion-icon>
+        </div>
+        <div class="stat-info">
+          <h4>4.8</h4>
+          <p>Rating</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+          <ion-icon name="trophy-outline" color="light"></ion-icon>
+        </div>
+        <div class="stat-info">
+          <h4>150</h4>
+          <p>Points</p>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
-      <div class="product-image">
-        <ion-icon name="wine" color="success"></ion-icon>
+    <div class="section-header">
+      <h3>
+        <ion-icon name="grid-outline"></ion-icon>
+        Categories
+      </h3>
+      <ion-button fill="clear" size="small" routerLink="/shop">
+        View All
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="categories-scroll">
+      <div class="category-chip active">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <span>Citrus</span>
       </div>
-      <div class="product-info">
-        <h4>Green Detox</h4>
-        <p>Kale, apple & cucumber</p>
-        <div class="product-footer">
-          <span class="price">₱180</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
+      <div class="category-chip">
+        <ion-icon name="water-outline"></ion-icon>
+        <span>Tropical</span>
+      </div>
+      <div class="category-chip">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>Detox</span>
+      </div>
+      <div class="category-chip">
+        <ion-icon name="flower-outline"></ion-icon>
+        <span>Berry</span>
+      </div>
+      <div class="category-chip">
+        <ion-icon name="sparkles-outline"></ion-icon>
+        <span>Premium</span>
+      </div>
+      <div class="category-chip">
+        <ion-icon name="ice-cream-outline"></ion-icon>
+        <span>Smoothies</span>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h3>
+        <ion-icon name="flame-outline"></ion-icon>
+        Featured Products
+      </h3>
+      <ion-button fill="clear" size="small" routerLink="/shop">
+        See More
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-badge">
+          <ion-badge color="danger">🔥 Hot</ion-badge>
+        </div>
+        <div class="product-image">
+          <ion-icon name="beer-outline" style="color: #ff9800;"></ion-icon>
+        </div>
+        <div class="product-info">
+          <h4>🍊 Orange Burst</h4>
+          <div class="product-rating">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span>4.5</span>
+          </div>
+          <p>Fresh Valencia oranges</p>
+          <div class="product-footer">
+            <span class="price">₱120</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">
+          <ion-badge color="success">✨ New</ion-badge>
+        </div>
+        <div class="product-image">
+          <ion-icon name="beer-outline" style="color: #e91e63;"></ion-icon>
+        </div>
+        <div class="product-info">
+          <h4>🍓 Berry Mix</h4>
+          <div class="product-rating">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span>4.8</span>
+          </div>
+          <p>Strawberry & blueberry blend</p>
+          <div class="product-footer">
+            <span class="price">₱150</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">
+          <ion-badge color="success">🌿 Healthy</ion-badge>
+        </div>
+        <div class="product-image">
+          <ion-icon name="beer-outline" style="color: #4CAF50;"></ion-icon>
+        </div>
+        <div class="product-info">
+          <h4>🥬 Green Detox</h4>
+          <div class="product-rating">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span>4.6</span>
+          </div>
+          <p>Kale, apple & cucumber</p>
+          <div class="product-footer">
+            <span class="price">₱180</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">
+          <ion-badge color="tertiary">👑 Premium</ion-badge>
+        </div>
+        <div class="product-image">
+          <ion-icon name="beer-outline" style="color: #9c27b0;"></ion-icon>
+        </div>
+        <div class="product-info">
+          <h4>🥭 Tropical Paradise</h4>
+          <div class="product-rating">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span>4.9</span>
+          </div>
+          <p>Mango, pineapple & passion fruit</p>
+          <div class="product-footer">
+            <span class="price">₱160</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
-      <div class="product-image">
-        <ion-icon name="wine" color="tertiary"></ion-icon>
-      </div>
-      <div class="product-info">
-        <h4>Tropical Paradise</h4>
-        <p>Mango, pineapple & passion fruit</p>
-        <div class="product-footer">
-          <span class="price">₱160</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
+    <div class="browse-shop-section">
+      <ion-button expand="block" size="large" color="warning" routerLink="/shop">
+        <ion-icon slot="start" name="storefront-outline"></ion-icon>
+        Browse All Products
+        <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="section-header">
+      <h3>
+        <ion-icon name="flash-outline"></ion-icon>
+        Quick Actions
+      </h3>
+    </div>
+
+    <div class="quick-actions">
+      <ion-card button="true" routerLink="/orders">
+        <ion-card-content>
+          <div class="action-icon-wrapper" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+            <ion-icon name="receipt-outline" color="light"></ion-icon>
+          </div>
+          <h4>📦 My Orders</h4>
+          <p>Track your orders</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card button="true" routerLink="/wishlist">
+        <ion-card-content>
+          <div class="action-icon-wrapper" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+            <ion-icon name="heart-outline" color="light"></ion-icon>
+          </div>
+          <h4>💝 Wishlist</h4>
+          <p>Saved items</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card button="true" routerLink="/profile">
+        <ion-card-content>
+          <div class="action-icon-wrapper" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">
+            <ion-icon name="person-outline" color="light"></ion-icon>
+          </div>
+          <h4>👤 Profile</h4>
+          <p>Manage account</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card button="true" routerLink="/support">
+        <ion-card-content>
+          <div class="action-icon-wrapper" style="background: linear-gradient(135deg, #f39c12, #d68910);">
+            <ion-icon name="help-circle-outline" color="light"></ion-icon>
+          </div>
+          <h4>🆘 Support</h4>
+          <p>Get help</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="section-header">
+      <h3>
+        <ion-icon name="newspaper-outline"></ion-icon>
+        Latest Updates
+      </h3>
+    </div>
+
+    <ion-card class="update-card">
+      <ion-card-content>
+        <div class="update-item">
+          <div class="update-icon">
+            <div class="icon-circle" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+              <ion-icon name="gift-outline" color="light"></ion-icon>
+            </div>
+          </div>
+          <div class="update-content">
+            <strong>🎁 New Arrivals!</strong>
+            <p>Check out our latest summer collection with exotic flavors</p>
+            <span class="update-time">
+              <ion-icon name="time-outline"></ion-icon>
+              2 hours ago
+            </span>
+          </div>
         </div>
+        
+        <ion-item lines="none" class="update-divider"></ion-item>
+        
+        <div class="update-item">
+          <div class="update-icon">
+            <div class="icon-circle" style="background: linear-gradient(135deg, #4CAF50, #388E3C);">
+              <ion-icon name="rocket-outline" color="light"></ion-icon>
+            </div>
+          </div>
+          <div class="update-content">
+            <strong>🚀 Fast Delivery</strong>
+            <p>Now delivering within 2 hours in Metro Manila area</p>
+            <span class="update-time">
+              <ion-icon name="time-outline"></ion-icon>
+              1 day ago
+            </span>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="loyalty-card">
+      <div class="loyalty-header">
+        <ion-icon name="medal-outline"></ion-icon>
+        <h3>🏆 Loyalty Rewards</h3>
+      </div>
+      <div class="loyalty-content">
+        <div class="points-display">
+          <span class="points">150</span>
+          <span class="points-label">⭐ Points</span>
+        </div>
+        <ion-progress-bar value="0.6" color="warning"></ion-progress-bar>
+        <p>350 more points to Gold tier! 🥇</p>
+        <ion-button expand="block" fill="solid" style="--background: white; --color: #FFB84D;">
+          <ion-icon slot="start" name="gift-outline"></ion-icon>
+          Redeem Rewards
+        </ion-button>
       </div>
     </div>
+
   </div>
-
-  <!-- Recent Updates -->
-  <div class="section-header">
-    <h3>Recent Updates</h3>
-  </div>
-
-  <ion-card>
-    <ion-card-content>
-      <div class="update-item">
-        <ion-icon name="gift" color="warning"></ion-icon>
-        <div>
-          <strong>New Arrivals!</strong>
-          <p>Check out our latest summer collection</p>
-        </div>
-      </div>
-      <div class="update-item">
-        <ion-icon name="rocket" color="success"></ion-icon>
-        <div>
-          <strong>Fast Delivery</strong>
-          <p>Now delivering within 2 hours in Metro Manila</p>
-        </div>
-      </div>
-    </ion-card-content>
-  </ion-card>
 </ion-content>

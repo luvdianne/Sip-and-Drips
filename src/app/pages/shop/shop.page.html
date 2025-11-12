@@ -5,31 +5,21 @@
     </ion-buttons>
     <ion-title>Shop</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="toggleSearch()">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
       <ion-button routerLink="/cart">
         <ion-icon name="cart-outline"></ion-icon>
-        <ion-badge color="danger">3</ion-badge>
+        <ion-badge color="danger">{{ cartItemCount }}</ion-badge>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 
-  <!-- Filter Toolbar -->
   <ion-toolbar style="--background: #fff; --color: #000;">
     <div class="filter-toolbar">
-      <ion-segment value="all" mode="md">
-        <ion-segment-button value="all">
-          <ion-label>All</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="citrus">
-          <ion-label>Citrus</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="tropical">
-          <ion-label>Tropical</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="berry">
-          <ion-label>Berry</ion-label>
+      <ion-segment [(ngModel)]="selectedCategory" (ionChange)="filterProducts()" mode="md">
+        <ion-segment-button *ngFor="let category of categories" [value]="category.value">
+          <ion-label>{{ category.label }}</ion-label>
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -37,737 +27,81 @@
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <!-- Search and Filter Row -->
-  <div class="search-filter-row">
+  <div class="search-filter-row" *ngIf="showSearch">
     <ion-searchbar 
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterProducts()"
       placeholder="Search juices..." 
       mode="ios"
-      style="--background: white;">
+      animated="true">
     </ion-searchbar>
-    <ion-button fill="solid" color="warning">
+    <ion-button fill="solid" color="warning" (click)="openFilters()">
       <ion-icon name="options-outline"></ion-icon>
     </ion-button>
   </div>
 
-  <!-- Sort Options -->
   <div class="sort-row">
-    <span class="results-count">50 Products</span>
-    <ion-select value="popular" interface="popover" placeholder="Sort by">
+    <span class="results-count">
+      <ion-icon name="basket-outline"></ion-icon>
+      {{ filteredProducts.length }} Products
+    </span>
+    <ion-select 
+      [(ngModel)]="sortBy" 
+      (ionChange)="sortProducts()"
+      interface="popover" 
+      placeholder="Sort by">
       <ion-select-option value="popular">Most Popular</ion-select-option>
       <ion-select-option value="price-low">Price: Low to High</ion-select-option>
       <ion-select-option value="price-high">Price: High to Low</ion-select-option>
+      <ion-select-option value="rating">Highest Rated</ion-select-option>
       <ion-select-option value="newest">Newest First</ion-select-option>
     </ion-select>
   </div>
 
-  <!-- Products Grid -->
   <div class="products-grid">
-    <!-- CITRUS (Orange) - 5 products -->
-    <div class="product-card">
-      <div class="product-image orange">
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
+    <div class="product-card" *ngFor="let product of filteredProducts" [@fadeIn]>
+      <div class="product-image" [ngClass]="product.colorClass">
+        <ion-icon [name]="product.icon"></ion-icon>
+        <ion-button 
+          class="wishlist-btn" 
+          fill="clear" 
+          size="small"
+          (click)="toggleWishlist(product)">
+          <ion-icon [name]="product.isWishlisted ? 'heart' : 'heart-outline'" [color]="product.isWishlisted ? 'danger' : ''"></ion-icon>
         </ion-button>
+        <span class="badge" *ngIf="product.badge" [ngClass]="product.badgeClass">
+          {{ product.badge }}
+        </span>
       </div>
       <div class="product-info">
-        <h4>Valencia Orange</h4>
-        <p>Pure Valencia orange juice</p>
+        <h4>{{ product.name }}</h4>
+        <p>{{ product.description }}</p>
         <div class="rating">
           <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (120)</span>
+          <span>{{ product.rating }} ({{ product.reviews }})</span>
         </div>
         <div class="product-footer">
-          <span class="price">₱120</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image orange">
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge">New</span>
-      </div>
-      <div class="product-info">
-        <h4>Blood Orange Blast</h4>
-        <p>Rich blood orange flavor</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (85)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱140</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image orange">
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Tangerine Tang</h4>
-        <p>Sweet tangerine delight</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.7 (95)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱125</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image orange">
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Mandarin Magic</h4>
-        <p>Fresh mandarin essence</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.6 (78)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱130</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image orange">
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Orange Sunrise</h4>
-        <p>Morning fresh orange</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (110)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱115</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <!-- CITRUS (Lemon) - 5 products -->
-    <div class="product-card">
-      <div class="product-image lemon">
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Lemon Zest</h4>
-        <p>Tangy lemon freshness</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.5 (92)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱110</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image lemon">
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Lemonade Classic</h4>
-        <p>Traditional lemonade</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (150)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱105</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image lemon">
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge sale">-15%</span>
-      </div>
-      <div class="product-info">
-        <h4>Lime Splash</h4>
-        <p>Zesty lime twist</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.7 (88)</span>
-        </div>
-        <div class="product-footer">
-          <div class="price-group">
-            <span class="price">₱102</span>
-            <span class="old-price">₱120</span>
+          <div class="price-group" *ngIf="product.oldPrice; else regularPrice">
+            <span class="price">₱{{ product.price }}</span>
+            <span class="old-price">₱{{ product.oldPrice }}</span>
           </div>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
+          <ng-template #regularPrice>
+            <span class="price">₱{{ product.price }}</span>
+          </ng-template>
+          <ion-button size="small" fill="solid" color="warning" (click)="addToCart(product)">
+            <ion-icon name="cart" slot="icon-only"></ion-icon>
           </ion-button>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="product-card">
-      <div class="product-image lemon">
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Citrus Burst</h4>
-        <p>Lemon-lime fusion</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.6 (75)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱125</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image lemon">
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Meyer Lemon Delight</h4>
-        <p>Sweet Meyer lemon</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (102)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱135</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TROPICAL (Mango) - 5 products -->
-    <div class="product-card">
-      <div class="product-image mango">
-        <ion-icon name="leaf-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Manila Mango</h4>
-        <p>Sweet Philippine mango</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>5.0 (180)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱160</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image mango">
-        <ion-icon name="leaf-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Mango Tango</h4>
-        <p>Tropical mango blend</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (145)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱155</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image mango">
-        <ion-icon name="leaf-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge">Premium</span>
-      </div>
-      <div class="product-info">
-        <h4>Alphonso Gold</h4>
-        <p>Indian Alphonso mango</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (98)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱200</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image mango">
-        <ion-icon name="leaf-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Mango Passion</h4>
-        <p>Mango with passion fruit</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (125)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱170</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image mango">
-        <ion-icon name="leaf-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Green Mango Kick</h4>
-        <p>Tangy green mango</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.6 (87)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱145</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TROPICAL (Pineapple) - 5 products -->
-    <div class="product-card">
-      <div class="product-image pineapple">
-        <ion-icon name="sparkles-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Pineapple Paradise</h4>
-        <p>Fresh pineapple juice</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.7 (112)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱140</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image pineapple">
-        <ion-icon name="sparkles-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Golden Pineapple</h4>
-        <p>Sweet golden variety</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (95)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱150</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image pineapple">
-        <ion-icon name="sparkles-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge sale">-20%</span>
-      </div>
-      <div class="product-info">
-        <h4>Pineapple Coconut</h4>
-        <p>Tropical fusion blend</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (130)</span>
-        </div>
-        <div class="product-footer">
-          <div class="price-group">
-            <span class="price">₱136</span>
-            <span class="old-price">₱170</span>
-          </div>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image pineapple">
-        <ion-icon name="sparkles-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Pineapple Mint</h4>
-        <p>Refreshing pineapple-mint</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.6 (78)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱145</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image pineapple">
-        <ion-icon name="sparkles-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Pineapple Ginger</h4>
-        <p>Spicy ginger twist</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.5 (65)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱155</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <!-- BERRY (Strawberry) - 5 products -->
-    <div class="product-card">
-      <div class="product-image strawberry">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Strawberry Dream</h4>
-        <p>Sweet strawberry pure</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (160)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱165</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image strawberry">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge">New</span>
-      </div>
-      <div class="product-info">
-        <h4>Strawberry Banana</h4>
-        <p>Classic combo blend</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (142)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱160</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image strawberry">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Wild Strawberry</h4>
-        <p>Forest strawberry flavor</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.7 (98)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱170</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image strawberry">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Strawberry Kiwi</h4>
-        <p>Strawberry and kiwi mix</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (135)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱175</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image strawberry">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Strawberry Lemonade</h4>
-        <p>Sweet and tangy fusion</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (118)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱150</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <!-- BERRY (Blueberry) - 5 products -->
-    <div class="product-card">
-      <div class="product-image blueberry">
-        <ion-icon name="ellipse-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Blueberry Blast</h4>
-        <p>Pure blueberry juice</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (105)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱180</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image blueberry">
-        <ion-icon name="ellipse-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-        <span class="badge">Premium</span>
-      </div>
-      <div class="product-info">
-        <h4>Wild Blueberry</h4>
-        <p>Organic wild blueberry</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>5.0 (88)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱210</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image blueberry">
-        <ion-icon name="ellipse-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Blueberry Acai</h4>
-        <p>Superfruit combination</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.9 (92)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱195</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image blueberry">
-        <ion-icon name="ellipse-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Blueberry Pomegranate</h4>
-        <p>Antioxidant-rich blend</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.7 (76)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱185</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-image blueberry">
-        <ion-icon name="ellipse-outline"></ion-icon>
-        <ion-button class="wishlist-btn" fill="clear" size="small">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </div>
-      <div class="product-info">
-        <h4>Blueberry Lemon</h4>
-        <p>Tart and sweet harmony</p>
-        <div class="rating">
-          <ion-icon name="star" color="warning"></ion-icon>
-          <span>4.8 (94)</span>
-        </div>
-        <div class="product-footer">
-          <span class="price">₱175</span>
-          <ion-button size="small" fill="solid" color="warning">
-            <ion-icon name="cart"></ion-icon>
-          </ion-button>
-        </div>
-      </div>
-    </div>
+  <div class="empty-state" *ngIf="filteredProducts.length === 0">
+    <ion-icon name="search-outline"></ion-icon>
+    <h3>No products found</h3>
+    <p>Try adjusting your search or filters</p>
+    <ion-button fill="outline" color="warning" (click)="clearFilters()">
+      Clear Filters
+    </ion-button>
   </div>
 </ion-content>

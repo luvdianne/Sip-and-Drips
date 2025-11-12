@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-container">
+    <div class="login-header">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <h1>Welcome Back</h1>
+      <p>Sign in to continue</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <ion-item class="form-item" lines="none" [class.item-has-value]="username?.value">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input 
+          formControlName="username" 
+          type="text"
+          autocomplete="username">
+        </ion-input>
+      </ion-item>
+      <div class="error-text" *ngIf="username?.invalid && username?.touched">
+        <p>Username is required</p>
+      </div>
+
+      <ion-item class="form-item password-item" lines="none" [class.item-has-value]="password?.value">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input 
+          formControlName="password" 
+          [type]="passwordFieldType"
+          autocomplete="current-password">
+        </ion-input>
+        <ion-button 
+          fill="clear" 
+          slot="end" 
+          (click)="togglePasswordVisibility()"
+          class="password-toggle"
+          type="button">
+          <ion-icon 
+            [name]="showPassword ? 'eye-off' : 'eye'" 
+            slot="icon-only">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+      <div class="error-text" *ngIf="password?.invalid && password?.touched">
+        <p *ngIf="password?.errors?.['required']">Password is required</p>
+        <p *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</p>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        class="login-button"
+        [disabled]="isLoading || loginForm.invalid">
+        <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+        {{ isLoading ? 'Logging in...' : 'Login' }}
+      </ion-button>
+    </form>
+
+    <div class="demo-info">
+      <p>Demo Credentials:</p>
+      <p>Username: <code>dianne</code></p>
+      <p>Password: <code>password123</code></p>
+    </div>
+  </div>
+</ion-content>

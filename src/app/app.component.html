@@ -1,14 +1,12 @@
 <ion-app>
-  <ion-menu contentId="main-content" side="start" menuId="main-menu">
+  <ion-menu *ngIf="!isLoginPage" contentId="main-content" side="start" menuId="main-menu">
     <ion-content>
-      <!-- Header / Profile -->
       <div class="menu-header">
         <img src="assets/logo.png" alt="logo" class="menu-avatar" />
         <h2>Sip and Drips.</h2>
         <p>Shop</p>
       </div>
 
-      <!-- Navigation List -->
       <ion-list>
         <ion-menu-toggle auto-hide="true">
           <ion-item routerLink="/dashboard">
@@ -48,9 +46,8 @@
         </ion-menu-toggle>
       </ion-list>
 
-      <!-- Logout Button -->
       <div class="logout-btn">
-        <ion-item button>
+        <ion-item button (click)="logout()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>
@@ -58,8 +55,7 @@
     </ion-content>
   </ion-menu>
 
-  <!-- Main Page Content -->
-  <div class="ion-page" id="main-content">
+  <div class="ion-page" [id]="!isLoginPage ? 'main-content' : ''">
     <ion-router-outlet></ion-router-outlet>
   </div>
 </ion-app>

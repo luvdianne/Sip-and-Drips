@@ -1,14 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { importProvidersFrom } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { provideHttpClient } from '@angular/common/http';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideAnimations(),
     provideRouter(routes),
-    importProvidersFrom(IonicModule.forRoot())
+    provideHttpClient(),
+    provideIonicAngular({})
   ]
 });
