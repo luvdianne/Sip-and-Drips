@@ -1,0 +1,144 @@
+.custom-gradient-bg {
+  --background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
+}
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+
+  ion-icon {
+    font-size: 120px;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+}
+
+.cart-list {
+  background: transparent;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  --background: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+
+    ion-icon {
+      font-size: 40px;
+      color: white;
+    }
+
+    &.orange { background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%); }
+    &.lemon { background: linear-gradient(135deg, #fff176 0%, #ffd54f 100%); }
+    &.mango { background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%); }
+    &.pineapple { background: linear-gradient(135deg, #ffd54f 0%, #ffc107 100%); }
+    &.strawberry { background: linear-gradient(135deg, #ff8a80 0%, #f44336 100%); }
+    &.blueberry { background: linear-gradient(135deg, #7986cb 0%, #5c6bc0 100%); }
+  }
+
+  ion-label {
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .item-price {
+      font-size: 14px;
+      color: #ff9800;
+      font-weight: 600;
+    }
+  }
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ion-button {
+    --padding-start: 4px;
+    --padding-end: 4px;
+
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+
+  .quantity {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+  }
+}
+
+.summary-card {
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+
+    &.discount {
+      color: #4caf50;
+    }
+
+    &.total {
+      font-size: 18px;
+      font-weight: 700;
+      padding-top: 16px;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 8px;
+      color: #ff9800;
+    }
+  }
+
+  .promo-code {
+    margin: 12px 0;
+    --background: #f5f5f5;
+    border-radius: 8px;
+  }
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  font-weight: 600;
+  height: 50px;
+}
