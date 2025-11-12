@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar style="--background: #f9e9de; --color: #000;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/shop"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Shopping Cart</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearCart()" *ngIf="cart.length > 0">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-gradient-bg">
+  <!-- Empty Cart State -->
+  <div *ngIf="cart.length === 0" class="empty-cart">
+    <ion-icon name="cart-outline" size="large"></ion-icon>
+    <h2>Your cart is empty</h2>
+    <p>Add some delicious juices to get started!</p>
+    <ion-button routerLink="/shop" expand="block" color="warning">
+      Browse Products
+    </ion-button>
+  </div>
+
+  <!-- Cart Items -->
+  <div *ngIf="cart.length > 0">
+    <ion-list class="cart-list">
+      <ion-item-sliding *ngFor="let item of cart">
+        <ion-item lines="none" class="cart-item">
+          <div class="item-image" [ngClass]="getProductColorClass(item.subcategory)" slot="start">
+            <ion-icon [name]="item.icon"></ion-icon>
+          </div>
+          
+          <ion-label>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.description }}</p>
+            <div class="item-price">₱{{ item.price }} each</div>
+          </ion-label>
+
+          <div class="quantity-controls" slot="end">
+            <ion-button fill="clear" size="small" (click)="updateQuantity(item.id, -1)">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <ion-button fill="clear" size="small" (click)="updateQuantity(item.id, 1)">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="removeFromCart(item.id)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <!-- Order Summary -->
+    <ion-card class="summary-card">
+      <ion-card-header>
+        <ion-card-title>Order Summary</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="summary-row">
+          <span>Subtotal ({{ cartItemCount }} items)</span>
+          <span>₱{{ subtotal }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery Fee</span>
+          <span>₱{{ deliveryFee }}</span>
+        </div>
+        <div class="summary-row discount" *ngIf="discount > 0">
+          <span>Discount</span>
+          <span>-₱{{ discount }}</span>
+        </div>
+        <ion-item lines="none" class="promo-code">
+          <ion-input 
+            [(ngModel)]="promoCode" 
+            placeholder="Enter promo code"
+            (ionChange)="applyPromoCode()">
+          </ion-input>
+          <ion-button slot="end" fill="outline" size="small" (click)="applyPromoCode()">
+            Apply
+          </ion-button>
+        </ion-item>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>₱{{ cartTotal }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Checkout Button -->
+    <ion-button 
+      expand="block" 
+      color="warning" 
+      size="large"
+      class="checkout-btn"
+      routerLink="/checkout">
+      Proceed to Checkout
+      <ion-icon name="arrow-forward" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

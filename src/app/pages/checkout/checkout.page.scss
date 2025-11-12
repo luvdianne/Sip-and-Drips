@@ -1,0 +1,251 @@
+.custom-gradient-bg {
+  --background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
+}
+
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      color: #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .step-label {
+      font-size: 11px;
+      color: #999;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      .step-number {
+        background: #ff9800;
+        color: white;
+      }
+      .step-label {
+        color: #ff9800;
+        font-weight: 600;
+      }
+    }
+
+    &.completed {
+      .step-number {
+        background: #4caf50;
+        color: white;
+      }
+      .step-label {
+        color: #4caf50;
+      }
+    }
+  }
+
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: #e0e0e0;
+    margin: 0 8px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+
+    &.completed {
+      background: #4caf50;
+    }
+  }
+}
+
+.step-card {
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+  ion-item {
+    --background: transparent;
+    margin-bottom: 12px;
+  }
+
+  .mt-20 {
+    margin-top: 20px;
+  }
+}
+
+.payment-details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+
+  .card-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+  }
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.review-card {
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+
+    ion-icon {
+      font-size: 24px;
+      color: #ff9800;
+      min-width: 24px;
+    }
+
+    > div {
+      flex: 1;
+
+      strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #333;
+      }
+
+      p {
+        margin: 2px 0;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+
+    ion-button {
+      margin: 0;
+    }
+  }
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .item-image-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ion-icon {
+        font-size: 24px;
+        color: white;
+      }
+
+      &.orange { background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%); }
+      &.lemon { background: linear-gradient(135deg, #fff176 0%, #ffd54f 100%); }
+      &.mango { background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%); }
+      &.pineapple { background: linear-gradient(135deg, #ffd54f 0%, #ffc107 100%); }
+      &.strawberry { background: linear-gradient(135deg, #ff8a80 0%, #f44336 100%); }
+      &.blueberry { background: linear-gradient(135deg, #7986cb 0%, #5c6bc0 100%); }
+    }
+
+    .item-details {
+      flex: 1;
+
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #333;
+      }
+
+      p {
+        font-size: 13px;
+        color: #666;
+      }
+    }
+
+    .item-total {
+      font-weight: 600;
+      color: #ff9800;
+    }
+  }
+}
+
+.summary-card {
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+
+    &.discount {
+      color: #4caf50;
+    }
+
+    &.total {
+      font-size: 18px;
+      font-weight: 700;
+      padding-top: 16px;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 8px;
+      color: #ff9800;
+    }
+  }
+}
+
+.terms-item {
+  margin: 20px 0;
+
+  ion-label {
+    font-size: 13px;
+    color: #666;
+
+    a {
+      color: #ff9800;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-steps {
+    padding: 12px 8px;
+
+    .step-label {
+      font-size: 10px;
+    }
+  }
+}

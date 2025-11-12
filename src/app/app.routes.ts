@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { ShopPage } from './pages/shop/shop.page';
+import { CartPage } from './pages/cart/cart.page';
+import { CheckoutPage } from './pages/checkout/checkout.page';
+import { OrderSuccessPage } from './pages/order-success/order-success.page';
+import { OrdersPage } from './pages/orders/orders.page';
 import { WishlistPage } from './pages/wishlist/wishlist.page';
 import { NotificationsPage } from './pages/notifications/notifications.page';
 import { AboutPage } from './pages/about/about.page';
@@ -12,6 +16,10 @@ export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardPage },
   { path: 'shop', component: ShopPage },
+  { path: 'cart', component: CartPage },
+  { path: 'checkout', component: CheckoutPage },
+  { path: 'order-success', component: OrderSuccessPage },
+  { path: 'orders', component: OrdersPage },
   { path: 'wishlist', component: WishlistPage },
   { path: 'notifications', component: NotificationsPage },
   { path: 'about', component: AboutPage },
