@@ -1,12 +1,564 @@
 <ion-header>
-  <ion-toolbar style="--background: #f9e9de; --color: #000;">
+  <ion-toolbar style="--background: #f9e9de;">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Wishlist</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <p>No wishlist items found.</p>
+  <div class="content-wrapper">
+    
+    <!-- Simple Header -->
+    <div class="page-header">
+      <div class="header-left">
+        <h1>My Favorites</h1>
+        <p>8 items saved</p>
+      </div>
+      <ion-button fill="outline" color="medium" size="small" class="clear-btn">
+        Clear All
+      </ion-button>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab active">All</button>
+      <button class="tab">Citrus</button>
+      <button class="tab">Tropical</button>
+      <button class="tab">Berry</button>
+    </div>
+
+    <!-- Wishlist Grid -->
+    <div class="wishlist-grid">
+      
+      <!-- Item 1 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image mango">
+          <ion-icon name="leaf-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Manila Mango</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>5.0</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱160</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image orange">
+          <ion-icon name="nutrition-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Blood Orange</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.9</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱140</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image strawberry">
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Strawberry Dream</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.9</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱165</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image pineapple">
+          <ion-icon name="sparkles-outline"></ion-icon>
+          <span class="sale-badge">-20%</span>
+        </div>
+        <div class="item-info">
+          <h3>Pineapple Coconut</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.9</span>
+          </div>
+          <div class="item-footer">
+            <div class="price-group">
+              <span class="price">₱136</span>
+              <span class="old-price">₱170</span>
+            </div>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image blueberry">
+          <ion-icon name="ellipse-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Wild Blueberry</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>5.0</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱210</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image lemon">
+          <ion-icon name="water-outline"></ion-icon>
+          <span class="sale-badge">-15%</span>
+        </div>
+        <div class="item-info">
+          <h3>Lime Splash</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.7</span>
+          </div>
+          <div class="item-footer">
+            <div class="price-group">
+              <span class="price">₱102</span>
+              <span class="old-price">₱120</span>
+            </div>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image mango">
+          <ion-icon name="leaf-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Mango Passion</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.8</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱170</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="wishlist-item">
+        <button class="remove-btn">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <div class="item-image strawberry">
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <div class="item-info">
+          <h3>Strawberry Kiwi</h3>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <span>4.9</span>
+          </div>
+          <div class="item-footer">
+            <span class="price">₱175</span>
+            <ion-button size="small" fill="solid" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="bottom-action">
+      <ion-button expand="block" color="warning" size="large">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        Add All to Cart (₱1,206)
+      </ion-button>
+    </div>
+
+  </div>
 </ion-content>
+
+<style>
+.custom-gradient-bg {
+  --background: linear-gradient(135deg, #fff9f0 0%, #ffe4c4 100%);
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-left h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.header-left p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.clear-btn {
+  --border-width: 1.5px;
+  --border-radius: 12px;
+  height: 36px;
+  font-weight: 600;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tab {
+  background: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tab.active {
+  background: #FFB84D;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 184, 77, 0.3);
+}
+
+.tab:hover:not(.active) {
+  background: #f5f5f5;
+}
+
+/* Wishlist Grid */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.wishlist-item {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.wishlist-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #FF5252;
+  transform: rotate(90deg);
+}
+
+.remove-btn ion-icon {
+  font-size: 18px;
+  color: #999;
+}
+
+.remove-btn:hover ion-icon {
+  color: white;
+}
+
+.item-image {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.item-image ion-icon {
+  font-size: 56px;
+}
+
+.item-image.orange {
+  background: linear-gradient(135deg, #fff5e6, #ffd699);
+  color: #ff8c00;
+}
+
+.item-image.lemon {
+  background: linear-gradient(135deg, #fffde7, #fff59d);
+  color: #fdd835;
+}
+
+.item-image.mango {
+  background: linear-gradient(135deg, #fff8e1, #ffcc80);
+  color: #ff9800;
+}
+
+.item-image.pineapple {
+  background: linear-gradient(135deg, #fffbea, #ffd54f);
+  color: #f9a825;
+}
+
+.item-image.strawberry {
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+  color: #e91e63;
+}
+
+.item-image.blueberry {
+  background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+  color: #5c6bc0;
+}
+
+.sale-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #FF5252;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.item-info {
+  padding: 12px;
+}
+
+.item-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 6px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.rating ion-icon {
+  font-size: 14px;
+  color: #FFB84D;
+}
+
+.rating span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFB84D;
+}
+
+.price-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.old-price {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.item-footer ion-button {
+  width: 36px;
+  height: 36px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 12px;
+}
+
+.item-footer ion-button ion-icon {
+  font-size: 20px;
+}
+
+/* Bottom Action */
+.bottom-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: white;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.bottom-action ion-button {
+  height: 52px;
+  font-weight: 700;
+  --border-radius: 16px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Responsive */
+@media (min-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  
+  .item-image {
+    height: 160px;
+  }
+  
+  .item-image ion-icon {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .item-info h3 {
+    font-size: 16px;
+  }
+  
+  .price {
+    font-size: 20px;
+  }
+  
+  .bottom-action {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Scrollbar */
+.filter-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+  background: #FFB84D;
+  border-radius: 4px;
+}
+</style>

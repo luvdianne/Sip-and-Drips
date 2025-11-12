@@ -1,16 +1,14 @@
 @font-face {
   font-family: 'AlphaKind';
   src: url('/assets/fonts/AlphaKind.ttf') format('truetype');
-  /* add other formats if you have them, e.g. woff, woff2 */
   font-weight: normal;
   font-style: normal;
 }
 
-
 .menu-header {
   text-align: center;
   padding: 40px 15px 90px;
-  background: linear-gradient(135deg, #FFDCA9, #fff2d3); /* yellow theme */
+  background: linear-gradient(135deg, #FFDCA9, #fff2d3);
   color: #000;
   position: relative;
   overflow: hidden;
@@ -36,6 +34,7 @@
 
 ion-list {
   margin-top: 5px;
+  padding-bottom: 80px; /* Space for logout button */
 }
 
 ion-item {
@@ -44,13 +43,19 @@ ion-item {
 }
 
 ion-item:hover {
-  --background: #fef3c7; // light hover
+  --background: #fef3c7;
 }
 
 .logout-btn {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  max-width: 304px; /* Default ion-menu width */
+  background: white;
+  padding: 10px 0;
+  border-top: 1px solid #e5e5e5;
+  z-index: 10;
 }
 
 ion-menu ion-item {
@@ -62,32 +67,42 @@ ion-menu ion-item {
   transition: background 0.2s ease;
 }
 
-/* Hover (desktop) */
 ion-menu ion-item:hover {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
 }
 
-/* Pressed / Active (mobile tap effect) */
 ion-menu ion-item:active {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-
+/* Enable scrolling for the menu with hidden scrollbar */
 ion-menu {
-  --overflow: hidden; /* Ionic var */
-  overflow: hidden !important; /* force disable scroll */
+  --overflow: auto;
+  overflow: visible !important;
 }
 
 ion-menu ion-content {
-  --overflow: hidden;
-  overflow: hidden !important;
+  --overflow: auto;
+  overflow: auto !important;
+  
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  
+  /* Hide scrollbar for IE and Edge legacy */
+  -ms-overflow-style: none;
 }
 
-
 :root {
-  --app-max-width: 420px; /* iPhone 12-ish width */
+  --app-max-width: 420px;
 }
 
 ion-app {
@@ -99,6 +114,5 @@ ion-router-outlet {
   max-width: var(--app-max-width);
   width: 100%;
   margin: 0 auto;
-  box-shadow: 0 0 12px rgba(0,0,0,0.2); /* optional, nice look */
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
-

@@ -11,3 +11,4 @@ import { FormsModule } from '@angular/forms';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class ShopPage {}
+

@@ -8,75 +8,174 @@
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <h2 class="title" style="text-align: center;">Team</h2>
+  <div class="content-wrapper">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h2 class="title">Meet the Team</h2>
+      <p class="subtitle">The creators behind Sip and Drips</p>
+    </div>
 
-  <!-- Developer Card -->
-  <div class="profile-container">
-  <div class="profile-card">
-    <img class="profile-pic" src="assets/aldean.png" alt="Aldean">
-
-    <div class="profile-info">
-      <h3>Aldean Jude De Guzman</h3>
-      <p>Developer</p>
-
-      <div class="card-body">
-        <!-- Skills on the left -->
-        <div class="skills">
-          <h4>Skills</h4>
-          <ul>
-            <li>JavaScript</li>
-            <li>3D Modeling</li>
-            <li>Ionic</li>
-          </ul>
+    <!-- Developer Cards -->
+    <div class="developers-list">
+      
+      <!-- Developer 1 -->
+      <div class="developer-card">
+        <div class="avatar-container">
+          <div class="avatar">
+            <ion-icon name="person"></ion-icon>
+          </div>
+          <div class="role-badge">Lead Developer</div>
+        </div>
+        <div class="developer-info">
+          <h3>Juan Dela Cruz</h3>
+          <p class="role">Full Stack Developer</p>
+          <p class="description">
+            Responsible for the overall architecture, backend development, and API integration. Ensures seamless functionality across all app features.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Ionic</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">TypeScript</span>
+          </div>
+          <div class="social-links">
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-github"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="mail"></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </div>
 
-      <!-- Social links centered at bottom -->
-      <div class="social-links">
-        <a href="https://www.linkedin.com/" target="_blank">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
-        <a href="https://github.com/luvdianne/Sip-and-Drips..git">
-          <ion-icon name="logo-github"></ion-icon>
-        </a>
-        <a href="https://x.com/">
-          <ion-icon name="logo-twitter"></ion-icon>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="profile-card">
-    <img class="profile-pic" src="assets/dianne.jpg" alt="Dianne">
-
-    <div class="profile-info">
-      <h3>Dianne Delos Santos</h3>
-      <p>Developer</p>
-
-      <div class="card-body">
-        <div class="skills">
-          <h4>Skills</h4>
-          <ul>
-            <li>3D Modeling</li>
-            <li>Node.js</li>
-            <li>UI/UX</li>
-          </ul>
+      <!-- Developer 2 -->
+      <div class="developer-card">
+        <div class="avatar-container">
+          <div class="avatar">
+            <ion-icon name="person"></ion-icon>
+          </div>
+          <div class="role-badge ui">UI/UX Designer</div>
+        </div>
+        <div class="developer-info">
+          <h3>Maria Santos</h3>
+          <p class="role">UI/UX Designer</p>
+          <p class="description">
+            Designed the user interface and experience, creating an intuitive and visually appealing design that enhances user engagement.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">UI Design</span>
+            <span class="skill-tag">Prototyping</span>
+          </div>
+          <div class="social-links">
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-behance"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-dribbble"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="mail"></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </div>
 
-      <div class="social-links">
-        <a href="https://www.linkedin.com/" target="_blank">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
-        <a href="https://github.com/luvdianne/Sip-and-Drips..git">
-          <ion-icon name="logo-github"></ion-icon>
-        </a>
-        <a href="https://x.com/">
-          <ion-icon name="logo-twitter"></ion-icon>
-        </a>
+      <!-- Developer 3 -->
+      <div class="developer-card">
+        <div class="avatar-container">
+          <div class="avatar">
+            <ion-icon name="person"></ion-icon>
+          </div>
+          <div class="role-badge frontend">Frontend Dev</div>
+        </div>
+        <div class="developer-info">
+          <h3>Carlos Reyes</h3>
+          <p class="role">Frontend Developer</p>
+          <p class="description">
+            Implemented the frontend components, responsive layouts, and interactive features. Focused on performance optimization and user experience.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SCSS</span>
+          </div>
+          <div class="social-links">
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-github"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-codepen"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="mail"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer 4 -->
+      <div class="developer-card">
+        <div class="avatar-container">
+          <div class="avatar">
+            <ion-icon name="person"></ion-icon>
+          </div>
+          <div class="role-badge qa">QA Tester</div>
+        </div>
+        <div class="developer-info">
+          <h3>Ana Garcia</h3>
+          <p class="role">Quality Assurance</p>
+          <p class="description">
+            Conducted thorough testing across devices and platforms, ensuring bug-free functionality and smooth user experience throughout the app.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Testing</span>
+            <span class="skill-tag">QA</span>
+            <span class="skill-tag">Bug Tracking</span>
+          </div>
+          <div class="social-links">
+            <ion-button fill="clear" size="small">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small">
+              <ion-icon name="mail"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Project Info -->
+    <div class="project-info-card">
+      <h3>About This Project</h3>
+      <p>
+        Sip and Drips was developed as a capstone project to create a modern, user-friendly mobile application for ordering artisanal bottled juices. Built with Ionic Angular, the app showcases our team's expertise in mobile development, UI/UX design, and quality assurance.
+      </p>
+      <div class="tech-stack">
+        <h4>Tech Stack</h4>
+        <div class="tech-tags">
+          <span class="tech-tag">Ionic Framework</span>
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">SCSS</span>
+          <span class="tech-tag">Capacitor</span>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
 
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h3>Get In Touch</h3>
+      <p>Have questions or feedback? We'd love to hear from you!</p>
+      <ion-button expand="block" color="warning">
+        <ion-icon slot="start" name="mail"></ion-icon>
+        Contact Us
+      </ion-button>
+    </div>
+
+  </div>
 </ion-content>

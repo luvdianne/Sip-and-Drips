@@ -4,9 +4,222 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Notifications</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Filter Tabs -->
+  <ion-toolbar style="--background: #fff; --color: #000;">
+    <ion-segment value="all" mode="md">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="orders">
+        <ion-label>Orders</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="promos">
+        <ion-label>Promos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="updates">
+        <ion-label>Updates</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <p>Here are your notifications.</p>
+  <!-- Today Section -->
+  <div class="notification-section">
+    <h3 class="section-title">Today</h3>
+
+    <!-- Notification 1 -->
+    <div class="notification-card unread">
+      <div class="notification-icon order">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Order Delivered</h4>
+        <p>Your order #12345 has been successfully delivered. Enjoy your fresh juices!</p>
+        <span class="timestamp">2 hours ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 2 -->
+    <div class="notification-card unread">
+      <div class="notification-icon promo">
+        <ion-icon name="gift"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>🎉 Special Offer!</h4>
+        <p>Get 20% off on all tropical blends today only! Use code: TROPICAL20</p>
+        <span class="timestamp">3 hours ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 3 -->
+    <div class="notification-card">
+      <div class="notification-icon update">
+        <ion-icon name="rocket"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>New Products Available</h4>
+        <p>Check out our latest summer collection featuring 5 new exotic juice flavors!</p>
+        <span class="timestamp">5 hours ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yesterday Section -->
+  <div class="notification-section">
+    <h3 class="section-title">Yesterday</h3>
+
+    <!-- Notification 4 -->
+    <div class="notification-card">
+      <div class="notification-icon order">
+        <ion-icon name="cube"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Order Shipped</h4>
+        <p>Your order #12344 is on its way! Expected delivery: Today</p>
+        <span class="timestamp">Yesterday, 6:30 PM</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 5 -->
+    <div class="notification-card">
+      <div class="notification-icon promo">
+        <ion-icon name="pricetag"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Flash Sale Alert</h4>
+        <p>Berry blend juices are now 30% off! Limited time offer.</p>
+        <span class="timestamp">Yesterday, 2:15 PM</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 6 -->
+    <div class="notification-card">
+      <div class="notification-icon order">
+        <ion-icon name="card"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Payment Confirmed</h4>
+        <p>Your payment of ₱540 has been successfully processed.</p>
+        <span class="timestamp">Yesterday, 10:00 AM</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- This Week Section -->
+  <div class="notification-section">
+    <h3 class="section-title">This Week</h3>
+
+    <!-- Notification 7 -->
+    <div class="notification-card">
+      <div class="notification-icon update">
+        <ion-icon name="heart"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Wishlist Item on Sale</h4>
+        <p>"Manila Mango" from your wishlist is now 15% off!</p>
+        <span class="timestamp">3 days ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 8 -->
+    <div class="notification-card">
+      <div class="notification-icon promo">
+        <ion-icon name="trophy"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Loyalty Rewards</h4>
+        <p>You've earned 50 points! Redeem for discounts on your next purchase.</p>
+        <span class="timestamp">4 days ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 9 -->
+    <div class="notification-card">
+      <div class="notification-icon update">
+        <ion-icon name="star"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Review Request</h4>
+        <p>How was your recent order? Share your feedback and earn rewards!</p>
+        <span class="timestamp">5 days ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Notification 10 -->
+    <div class="notification-card">
+      <div class="notification-icon order">
+        <ion-icon name="time"></ion-icon>
+      </div>
+      <div class="notification-content">
+        <h4>Restock Alert</h4>
+        <p>"Green Detox" is back in stock! Order now before it sells out again.</p>
+        <span class="timestamp">6 days ago</span>
+      </div>
+      <div class="notification-actions">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State (hidden when there are notifications) -->
+  <!-- <div class="empty-state">
+    <ion-icon name="notifications-off-outline"></ion-icon>
+    <h3>No Notifications</h3>
+    <p>You're all caught up! Check back later for updates.</p>
+  </div> -->
 </ion-content>

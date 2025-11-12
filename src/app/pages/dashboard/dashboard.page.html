@@ -4,10 +4,177 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding custom-gradient-bg">
-  <h2>Welcome to Sip & Drips 🧃</h2>
-  <p>Dashboard page.</p>
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h2>Welcome to Sip & Drips 🧃</h2>
+    <p>Refresh your day with artisanal bottled juices</p>
+  </div>
+
+  <!-- Promotional Banner -->
+  <div class="promo-banner">
+    <div class="promo-content">
+      <h3>🎉 Special Offer!</h3>
+      <p>Get 20% off on all tropical blends</p>
+      <ion-button size="small" fill="solid" color="warning">Shop Now</ion-button>
+    </div>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <ion-icon name="heart"></ion-icon>
+      <div class="stat-info">
+        <h4>0</h4>
+        <p>Wishlist</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <ion-icon name="bag-check"></ion-icon>
+      <div class="stat-info">
+        <h4>0</h4>
+        <p>Orders</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <ion-icon name="star"></ion-icon>
+      <div class="stat-info">
+        <h4>0</h4>
+        <p>Reviews</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <div class="section-header">
+    <h3>Browse by Category</h3>
+    <ion-button fill="clear" size="small" routerLink="/shop">View All</ion-button>
+  </div>
+
+  <div class="categories-scroll">
+    <div class="category-chip">
+      <ion-icon name="leaf"></ion-icon>
+      <span>Citrus</span>
+    </div>
+    <div class="category-chip">
+      <ion-icon name="water"></ion-icon>
+      <span>Tropical</span>
+    </div>
+    <div class="category-chip">
+      <ion-icon name="fitness"></ion-icon>
+      <span>Detox</span>
+    </div>
+    <div class="category-chip">
+      <ion-icon name="nutrition"></ion-icon>
+      <span>Berry Blends</span>
+    </div>
+    <div class="category-chip">
+      <ion-icon name="sparkles"></ion-icon>
+      <span>Premium</span>
+    </div>
+  </div>
+
+  <!-- Featured Products -->
+  <div class="section-header">
+    <h3>Featured Products</h3>
+    <ion-button fill="clear" size="small" routerLink="/shop">See More</ion-button>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-image">
+        <ion-icon name="wine" color="warning"></ion-icon>
+      </div>
+      <div class="product-info">
+        <h4>Orange Burst</h4>
+        <p>Fresh Valencia oranges</p>
+        <div class="product-footer">
+          <span class="price">₱120</span>
+          <ion-button size="small" fill="solid" color="warning">
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <ion-icon name="wine" color="danger"></ion-icon>
+      </div>
+      <div class="product-info">
+        <h4>Berry Mix</h4>
+        <p>Strawberry & blueberry</p>
+        <div class="product-footer">
+          <span class="price">₱150</span>
+          <ion-button size="small" fill="solid" color="warning">
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <ion-icon name="wine" color="success"></ion-icon>
+      </div>
+      <div class="product-info">
+        <h4>Green Detox</h4>
+        <p>Kale, apple & cucumber</p>
+        <div class="product-footer">
+          <span class="price">₱180</span>
+          <ion-button size="small" fill="solid" color="warning">
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <ion-icon name="wine" color="tertiary"></ion-icon>
+      </div>
+      <div class="product-info">
+        <h4>Tropical Paradise</h4>
+        <p>Mango, pineapple & passion fruit</p>
+        <div class="product-footer">
+          <span class="price">₱160</span>
+          <ion-button size="small" fill="solid" color="warning">
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Updates -->
+  <div class="section-header">
+    <h3>Recent Updates</h3>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="update-item">
+        <ion-icon name="gift" color="warning"></ion-icon>
+        <div>
+          <strong>New Arrivals!</strong>
+          <p>Check out our latest summer collection</p>
+        </div>
+      </div>
+      <div class="update-item">
+        <ion-icon name="rocket" color="success"></ion-icon>
+        <div>
+          <strong>Fast Delivery</strong>
+          <p>Now delivering within 2 hours in Metro Manila</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

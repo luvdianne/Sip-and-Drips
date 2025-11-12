@@ -7,3 +7,153 @@
     #fff0e5
   );
 }
+.custom-gradient-bg {
+  --background: linear-gradient(135deg, #fff9f0 0%, #ffe4c4 100%);
+}
+
+ion-segment {
+  --background: #f5f5f5;
+  border-radius: 12px;
+  margin: 8px;
+}
+
+ion-segment-button {
+  --indicator-color: #FFB84D;
+  --color-checked: #000;
+  min-height: 36px;
+  font-size: 13px;
+}
+
+.notification-section {
+  margin-bottom: 25px;
+  
+  .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    margin: 0 0 12px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.notification-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 12px;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &.unread {
+    box-shadow: 0 2px 12px rgba(255, 184, 77, 0.3);
+    border-left: 4px solid #FFB84D;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 8px;
+      height: 8px;
+      background: #FFB84D;
+      border-radius: 50%;
+    }
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  .notification-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    ion-icon {
+      font-size: 24px;
+      color: white;
+    }
+    
+    &.order {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+    }
+    
+    &.promo {
+      background: linear-gradient(135deg, #FF6B9D, #ff5588);
+    }
+    
+    &.update {
+      background: linear-gradient(135deg, #FFB84D, #ffa726);
+    }
+  }
+  
+  .notification-content {
+    flex: 1;
+    
+    h4 {
+      margin: 0 0 4px 0;
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    p {
+      margin: 0 0 8px 0;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .timestamp {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+  
+  .notification-actions {
+    display: flex;
+    align-items: flex-start;
+    
+    ion-button {
+      --color: #999;
+      --padding-start: 0;
+      --padding-end: 0;
+    }
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  
+  ion-icon {
+    font-size: 80px;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+}
